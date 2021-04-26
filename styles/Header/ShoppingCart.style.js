@@ -25,7 +25,7 @@ const useStyles = makeStyles({
   },
   cartDrawer:{
     top:'82px',
-    marginRight:'px',
+    marginRight:'45px',
   }
 });
 

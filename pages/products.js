@@ -1,9 +1,1 @@
-import React from 'react'
-
-export default function Products() {
-    return (
-        <div>
-            Products
-        </div>
-    )
-}
+export {default} from './products/[categoryId]'; 

@@ -1,21 +1,26 @@
-import { Grid,Button } from "@material-ui/core";
+import { Grid, Button } from "@material-ui/core";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import RemoveCircleOutlineIcon from "@material-ui/icons/RemoveCircleOutline";
 import useStyles from "../../styles/Cart.Styles";
 import { useState } from "react";
 
-
-export default function Item({ Item}) {
+export default function Item({ Item, getIndividualItemPrice }) {
   const classes = useStyles();
-  const { imageURL,id, name,price} = Item;
-  const [quantity, setQuantity] = useState(0);
+  const { imageURL, id, name, price } = Item;
+  const [quantity, setQuantity] = useState(1);
 
-  const incrementCount = (productId) => {
-    setQuantity(quantity++);
+  const incrementCount = (id) => {
+    let newQty = quantity + 1;
+    setQuantity(newQty);
+    let netAmount = price * newQty;
+    getIndividualItemPrice(id, netAmount);
   };
 
-  const decrementCount = (productId) => {
-    setQuantity(quantity - 1);
+  const decrementCount = (id) => {
+    let newQty = quantity - 1;
+    setQuantity(newQty);
+    let netAmount = price * newQty;
+    getIndividualItemPrice(id, netAmount);
   };
   return (
     <Grid
@@ -42,22 +47,41 @@ export default function Item({ Item}) {
           <Grid item className={classes.addOrRemoveItem}>
             <Grid container>
               <Grid item>
-                <Button className={classes.btnStyle} disabled={false}>
-                <RemoveCircleOutlineIcon color="secondary" onClick={()=>{decrementCount}} />
+                <Button
+                  className={classes.btnStyle}
+                  disabled={quantity == 1 ? true : false}
+                >
+                  <RemoveCircleOutlineIcon
+                    color="secondary"
+                    onClick={() => {
+                      decrementCount(id);
+                    }}
+                  />
                 </Button>
               </Grid>
-              <Grid item className={classes.ItemQt}>{quantity}</Grid>
+              <Grid item className={classes.ItemQt}>
+                {quantity}
+              </Grid>
               <Grid item>
-                <AddCircleIcon color="secondary" onClick={()=>{incrementCount}} />
+                <Button className={classes.btnStyle}>
+                  <AddCircleIcon
+                    color="secondary"
+                    onClick={() => {
+                      incrementCount(id);
+                    }}
+                  />
+                </Button>
               </Grid>
               <Grid item className={classes.ItemQt}>
-                  X  &nbsp; {price}
+                &nbsp;X &nbsp; Rs.{price}
               </Grid>
             </Grid>
           </Grid>
         </Grid>
       </Grid>
-      <Grid item className={classes.netWorth}>Rs.{netAmount}</Grid>
+      <Grid item className={classes.netWorth}>
+        Rs.{price * quantity}
+      </Grid>
     </Grid>
   );
 }

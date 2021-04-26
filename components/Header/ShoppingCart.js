@@ -6,21 +6,16 @@ import CartContent from './../ShoppingCart/CartContent';
 
 function ShoppingCart({isLoggedIn,count}) {
   const classes = useStyles();
-  const [state, setState] = useState({
-    top: false,
-    left: false,
-    bottom: false,
-    right: false,
-  });
+  const [state, setState] = useState({ right: false,});
 
-  const toggleDrawer = (anchor, open) => (event) => {
+  const toggleDrawer = (open) => (event) => {
     if (
       event.type === "keydown" &&
       (event.key === "Tab" || event.key === "Shift")
     ) {
       return;
     }
-    setState({ ...state, [anchor]: open });
+    setState({ right: open });
   };
 
   return (
@@ -43,7 +38,7 @@ function ShoppingCart({isLoggedIn,count}) {
           open={state["right"]}
           onClose={toggleDrawer("right", false)}
         >
-          <CartContent />
+          <CartContent closeDrawer={toggleDrawer}/>
         </Drawer>
       </div>
     </div>

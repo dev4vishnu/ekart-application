@@ -42,7 +42,8 @@ export const LeftSideNavStyle = styled.div`
 
 export const ProductsGridStyle = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: inherit;
+  /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
   align-items: center;
   grid-gap: 1rem;
   width: 100%;
@@ -73,6 +74,7 @@ export const ProductTitle = styled.div`
   font-weight: 700;
   margin: 0.5rem 0.5rem;
   height: 35px;
+  padding-top: 20px;
 `;
 
 export const ProductDescription = styled.div`

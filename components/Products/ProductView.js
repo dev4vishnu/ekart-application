@@ -1,5 +1,5 @@
 import { Button } from "@material-ui/core";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/action/user";
 import {
   ProductCardStyles,
@@ -10,7 +10,6 @@ import {
 
 export default function ProductView({ product }) {
   const dispatch = useDispatch();
-  const cart = useSelector(state => state.userCart);
 
   const { name, imageURL, description, price } = product;
 
@@ -26,7 +25,7 @@ export default function ProductView({ product }) {
       <ProductBottomGrid>
         <p>MRP &nbsp; Rs{price}</p>
         <Button
-          onClick={() => moveToCart(product)}
+          onClick={() =>{ moveToCart(product)}}
           size="small"
           variant="contained"
           color="secondary"

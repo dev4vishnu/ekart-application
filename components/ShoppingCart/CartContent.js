@@ -46,7 +46,8 @@ export default function CartContent({ closeDrawer }) {
   };
 
   const proceedToCheckOut = () => {
-    dispatch(clearCart({}));
+    closeDrawer(false);
+    dispatch(clearCart());
   };
   return (
     <DrawerRootStyle>
@@ -55,7 +56,8 @@ export default function CartContent({ closeDrawer }) {
         <CloseIcon color="secondary" onClick={closeDrawer(false)} />
       </CartHead>
       <CartBody>
-        {cartItems &&
+        {Array.isArray(cartItems) &&
+          cartItems.length !== 0 &&
           cartItems.map((item) => (
             <Item key={item} Item={item} getIndividualItemPrice={getPrice} />
           ))}
@@ -63,10 +65,13 @@ export default function CartContent({ closeDrawer }) {
       </CartBody>
       <CartFooter>
         {cartItems.length == 0 ? (
-          <Button className="btn-style" onClick={closeDrawer(false)}> Start Shopping </Button>
+          <Button className="btn-style" onClick={closeDrawer(false)}>
+            {" "}
+            Start Shopping{" "}
+          </Button>
         ) : (
-          <Button className="btn-style"  onClick={proceedToCheckOut,closeDrawer(false)}>
-            Proceed to checkoutRs. {netAmount}
+          <Button className="btn-style" onClick={proceedToCheckOut}>
+            Proceed to checkout &nbsp; Rs.{netAmount}
           </Button>
         )}
       </CartFooter>

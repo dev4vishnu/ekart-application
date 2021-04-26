@@ -20,6 +20,6 @@ export const addToCart = (product) => ({
 
 export const clearCart = () => ({
     type: CLEAR_CART,
-    payload:[],
+    payload:null,
 });
 

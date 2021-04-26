@@ -8,7 +8,6 @@ import {
 const initialState = {
   isLoggedIn: false,
   userDetails: null,
-  cart: [],
 };
 
 export const userReducer = (state = initialState, action) => {
@@ -38,7 +37,7 @@ export const userCart = (state = [], action) => {
     case ADD_TO_CART:
       return [...state, action.payload];
     case CLEAR_CART:
-      return [action.payload];
+      return [];
     default:
       return state;
   }

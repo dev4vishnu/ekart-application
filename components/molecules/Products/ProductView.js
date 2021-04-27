@@ -1,12 +1,12 @@
-import { Button } from "@material-ui/core";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../../redux/action/user";
+import { addToCart, snackbarMessage } from "./../../../redux/action/user";
 import {
   ProductCardStyles,
   ProductDescription,
   ProductTitle,
-  ProductBottomGrid,
-} from "../../styles/Pages/Products.Styles";
+} from "./../../../styles/Pages/Products.Styles";
+import BuyProductButton from './../../atoms/Products/BuyProductButton';
+
 
 export default function ProductView({ product }) {
   const dispatch = useDispatch();
@@ -15,24 +15,15 @@ export default function ProductView({ product }) {
 
   const moveToCart=(product)=>{
         dispatch(addToCart(product));
+        dispatch(snackbarMessage("Product added to cart"))
   }
 
   return (
     <ProductCardStyles>
-      <ProductTitle>{name}</ProductTitle>
+      <ProductTitle >{name}</ProductTitle>
       <img src={imageURL} alt={name} />
       <ProductDescription>{description}</ProductDescription>
-      <ProductBottomGrid>
-        <p>MRP &nbsp; Rs{price}</p>
-        <Button
-          onClick={() =>{ moveToCart(product)}}
-          size="small"
-          variant="contained"
-          color="secondary"
-        >
-          Buy Now
-        </Button>
-      </ProductBottomGrid>
+      <BuyProductButton price={price} product={product} moveToCart={moveToCart}  />
     </ProductCardStyles>
   );
 }

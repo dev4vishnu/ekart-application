@@ -1,14 +1,15 @@
-import { createGlobalStyle } from "styled-components";
+import  { createGlobalStyle } from "styled-components";
 
-export const GlobalStyles =createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
+
 html {
---red :#ff0000;
---black: #393939;
---grey:#3a3a3a;
---lightGrey:#e1e1e1;
---offwhite:#ededed;
 --maxWidth:1000px;
---bs:'0 12px 24px 0 rgba(0,0,0,0.9)';
+background-color: #fff;
+    color:rgb(5, 5, 5);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    text-rendering: optimizeLegibility;
 }
 a{
     text-decoration:none;
@@ -19,7 +20,7 @@ a:hover{
 }
 body{
     font-size: 12px;
-    font-family: 'Nunito', sans-serif;   
+    font-family:Dosis;    
     width: 100vw;
     height: 100vh;
     max-width:100%;
@@ -36,4 +37,5 @@ button{
     }
   }
 `;
+
 

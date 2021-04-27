@@ -1,24 +1,19 @@
 import { useSelector, useDispatch } from "react-redux";
-
-import { ProductTitle as DrawerTitle } from "../../styles/Pages/Products.Styles";
-import {
-  DrawerRootStyle,
-  CartHead,
-  CartBody,
-  CartFooter,
-} from "./../../styles/Cart.Styles";
-import CloseIcon from "@material-ui/icons/Close";
-import Item from "./Items";
 import { useState, useEffect } from "react";
-import EmptyCartTemplate from "./EmptyCart";
-import { clearCart } from "../../redux/action/user";
+
 import { Button } from "@material-ui/core/";
+import CartHeader from "./../../molecules/Cart/CartHeader";
+import CartBodySection from "../../molecules/Cart/CartBodySection";
+import { clearCart, snackbarMessage } from "./../../../redux/action/user";
+import { CartFooter, DrawerRootStyle } from "../../../styles/Cart.Styles";
 
 export default function CartContent({ closeDrawer }) {
   const dispatch = useDispatch();
   const CartArray = useSelector((state) => state.userCart);
+
   let cartItems = [...new Set(CartArray)];
   const [netAmount, setTotalAmount] = useState(0);
+
   const finalBill = new Object();
 
   useEffect(() => {
@@ -46,23 +41,14 @@ export default function CartContent({ closeDrawer }) {
   };
 
   const proceedToCheckOut = () => {
-    closeDrawer(false);
+      closeDrawer(false)
+    dispatch(snackbarMessage("Thank you for shopping with us !"));
     dispatch(clearCart());
   };
   return (
     <DrawerRootStyle>
-      <CartHead>
-        <DrawerTitle> My Cart &nbsp; ({cartItems.length} Items)</DrawerTitle>
-        <CloseIcon color="secondary" onClick={closeDrawer(false)} />
-      </CartHead>
-      <CartBody>
-        {Array.isArray(cartItems) &&
-          cartItems.length !== 0 &&
-          cartItems.map((item) => (
-            <Item key={item} Item={item} getIndividualItemPrice={getPrice} />
-          ))}
-        {cartItems.length == 0 && <EmptyCartTemplate />}
-      </CartBody>
+      <CartHeader cartItems={cartItems} closeDrawer={closeDrawer} />
+      <CartBodySection cartItems={cartItems} getPrice={getPrice} />
       <CartFooter>
         {cartItems.length == 0 ? (
           <Button className="btn-style" onClick={closeDrawer(false)}>
@@ -70,7 +56,7 @@ export default function CartContent({ closeDrawer }) {
             Start Shopping{" "}
           </Button>
         ) : (
-          <Button className="btn-style" onClick={proceedToCheckOut}>
+          <Button className="btn-style" onClick={()=>proceedToCheckOut()}>
             Proceed to checkout &nbsp; Rs.{netAmount}
           </Button>
         )}

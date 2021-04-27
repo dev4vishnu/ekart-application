@@ -1,8 +1,33 @@
 import styled from "styled-components";
+import { makeStyles } from "@material-ui/styles";
+
+export const useStyles = makeStyles({
+  buyButton:{
+    textTransform:'none',
+    height:'20px',
+    borderRadius: 0,
+    color: "white",
+    fontFamily: "Dosis",
+  }
+});
+
+
 
 export const ProductListing = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, auto));
+  /* display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, auto)); */
+
+  /* 4 in row with 1140vw==== */
+   display: flex;
+    grid-template-columns: repeat(auto-fit,minmax(51px,184px));
+
+    /*   repeat(auto-fit,minmax(200px,156px)) */
+
+  /* ===== 3 in a row with 900wv==== */
+  /* display: flex;
+    grid-template-columns: repeat(auto-fit,minmax(154px,213px)); 
+  ;*/
+
   .list-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -14,7 +39,6 @@ export const ProductListing = styled.div`
 
 export const LeftSideNavStyle = styled.div`
   width: 250px;
-  height: 100vh;
   background-color: #cacacd;
   padding: 5px;
   line-height: "1rem";
@@ -47,14 +71,16 @@ export const ProductsGridStyle = styled.div`
   align-items: center;
   grid-gap: 1rem;
   width: 100%;
-  margin-top: 10px;
+  margin-top: 20px;
   margin-left: 15px;
+  margin-bottom: 55px;
 `;
 
 export const ProductCardStyles = styled.div`
   display: grid;
-  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 1.5px 0.5px 2px 0px rgb(0 0 0 / 20%);
   padding: 5px;
+  border: 0.5px solid #dedede;
   img {
     margin: 0 auto;
     height: 80px;
@@ -95,17 +121,18 @@ export const ProductBottomGrid = styled.div`
     width: 100%;
     align-items:center;
     p{
+      font-size:10px;
       font-weight:600;
       color:black;
       font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
-    },
+    }
 `;
 
 export const SoldOutStyle = styled.div`
- background-color: #ff0000;
-    color: #fff;
-    font-size: 24px;
-    height: 65px;
-    margin-right: 8%;
-    padding: 90px;
-`
+  background-color: #ff0000;
+  color: #fff;
+  font-size: 24px;
+  height: 65px;
+  margin-right: 8%;
+  padding: 90px;
+`;

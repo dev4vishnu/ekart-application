@@ -2,6 +2,7 @@ import Header from './Header/Header';
 import Footer from './Footer/Footer';
 import { GlobalStyles } from './../styles/Pages/GlobalStyle';
 import { ContentAreaStyle } from './../styles/Pages/Pages.styles';
+import ToastNotification from './atoms/ToastNotification';
 
 
  
@@ -14,6 +15,7 @@ const Page=({children})=>{
             {children}
         </ContentAreaStyle>
         <Footer/>
+        <ToastNotification />
         </>
     )
 }

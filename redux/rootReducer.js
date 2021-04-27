@@ -2,6 +2,7 @@ import { combineReducers } from "redux";
 import {
   userReducer as userDetails,
   userList as registeredUsers,
+  snackbar,
   userCart,
 } from "./reducer/user";
 
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   categories,
   products,
   userCart,
+  snackbar,
 });
 
 export default rootReducer;

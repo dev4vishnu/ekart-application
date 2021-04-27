@@ -2,6 +2,8 @@ export const USER_SIGN_IN_SUCCESS = "USER_SIGN_IN_SUCCESS";
 export const USER_SIGN_UP_SUCCESS = "USER_SIGN_UP_SUCCESS";
 export const CLEAR_CART = "CLEAR_CART";
 export const ADD_TO_CART = "ADD_TO_CART";
+export const SHOW_SNACKBAR = "SHOW_SNACKBAR";
+
 
 export const login = (userData) => ({
     type: USER_SIGN_IN_SUCCESS,
@@ -23,3 +25,7 @@ export const clearCart = () => ({
     payload:null,
 });
 
+export const snackbarMessage=(message)=>({
+    type:SHOW_SNACKBAR,
+    payload:message,
+})

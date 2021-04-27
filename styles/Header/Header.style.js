@@ -6,7 +6,9 @@ const HeaderStyles = styled.header`
   justify-items: self-end;
   box-shadow: 1px 3px 7px 2px #cacacacc;
   text-align: center;
-  height: 80px;
+  height: 94px;
+  padding-left: 5rem;
+  padding-right: 5rem;
   .lhs {
     padding: 0.4rem 1rem;
     display: grid;
@@ -36,10 +38,9 @@ const HeaderStyles = styled.header`
   .login-reg a:hover {
     color: #c51162;
     text-decoration: none;
-    background-color:#f5f5f5;
-    border-radius:10%;
-    padding:5px;
-    
+    background-color: #f5f5f5;
+    border-radius: 10%;
+    padding: 5px;
   }
 `;
 

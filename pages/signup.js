@@ -10,7 +10,7 @@ import {
   MainTitleStyle,
   useStyles,
 } from "./../styles/Pages/SignIn.Styles";
-import { userSignUp,login } from "./../redux/action/user";
+import { userSignUp,login, snackbarMessage } from "./../redux/action/user";
 
 export default function SignUp() {
   const classes = useStyles();
@@ -32,6 +32,7 @@ export default function SignUp() {
     validationSchema: signUpValidationSchema,
 
     onSubmit: (values) => {
+      dispatch(snackbarMessage("Registration successful"))
       dispatch(userSignUp(values));
       route.push("/signin");
     },

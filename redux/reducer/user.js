@@ -3,6 +3,7 @@ import {
   ADD_TO_CART,
   USER_SIGN_UP_SUCCESS,
   CLEAR_CART,
+  SHOW_SNACKBAR,
 } from "../action/user";
 
 const initialState = {
@@ -38,6 +39,15 @@ export const userCart = (state = [], action) => {
       return [...state, action.payload];
     case CLEAR_CART:
       return [];
+    default:
+      return state;
+  }
+};
+
+export const snackbar = (state = null, action) => {
+  switch (action.type) {
+    case SHOW_SNACKBAR:
+      return action.payload;
     default:
       return state;
   }

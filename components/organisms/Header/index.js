@@ -1,9 +1,9 @@
 import Link from 'next/link';
-import HeaderStyles from './../../styles/Header/Header.style';
-import Logo from './Logo';
-import NavBar from './NavBar';
+import HeaderStyles from '../../../styles/Header/Header.style';
+import Logo from '../../molecules/Logo';
+import NavBar from '../../molecules/Navbar/NavBar';
 import {useSelector} from "react-redux";
-import ShoppingCart from './ShoppingCart';
+import ShoppingCart from '../../molecules/ShoppingCart';
 
 function Header() {
     const {isLoggedIn} = useSelector(state=>state.userDetails);

@@ -132,7 +132,8 @@ export const SoldOutStyle = styled.div`
   background-color: #ff0000;
   color: #fff;
   font-size: 24px;
-  height: 65px;
+  /* height: 65px; */
   margin-right: 8%;
-  padding: 90px;
+  padding: 15px;
+  width:10rem;
 `;

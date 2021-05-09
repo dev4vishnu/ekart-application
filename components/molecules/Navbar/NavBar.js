@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import NavStyles from './../../styles/Header/NavBar.style';
+import NavStyles from '../../../styles/Header/NavBar.style';
 function NavBar() {
     return (
         <NavStyles>

@@ -1,8 +1,8 @@
-import Header from './Header/Header';
-import Footer from './Footer/Footer';
+import Header from './organisms/Header/index';
 import { GlobalStyles } from './../styles/Pages/GlobalStyle';
 import { ContentAreaStyle } from './../styles/Pages/Pages.styles';
 import ToastNotification from './atoms/ToastNotification';
+import Footer from './organisms/Footer';
 
 
  

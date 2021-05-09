@@ -7,7 +7,7 @@ import {
   ProductsGridStyle,
   SoldOutStyle,
 } from "./../../styles/Pages/Products.Styles";
-import ProductView from './../../components/Products/ProductView';
+import ProductView from "./../../components/molecules/Products/ProductView";
 
 export default function CategoryDetailedView() {
   const { query } = useRouter();
@@ -16,14 +16,14 @@ export default function CategoryDetailedView() {
   const [selectedProductCategory, setCategory] = useState([]);
   const { categoryId } = query;
   useEffect(() => {
-    let list = productsList.length
-      ? productsList.filter((product) => product.category === categoryId)
-      : [];
+    let list = categoryId ? productsList.length
+      && productsList.filter((product) => product.category === categoryId)
+      : productsList.length && productsList;
     setCategory(list);
   }, []);
 
   const toggleCategory = (id) => {
-    let key = id ? id : categoryId
+    let key = id ? id : categoryId;
     let list = productsList.length
       ? productsList.filter((product) => product.category === key)
       : [];
@@ -33,13 +33,15 @@ export default function CategoryDetailedView() {
 
   const renderResult = () => {
     if (selectedProductCategory.length) {
-      return selectedProductCategory.map(product => {
-        return( 
-            <ProductView product={product} />
-        )
+      return selectedProductCategory.map((product) => {
+        return <ProductView product={product} />;
       });
-    }else{
-        return <SoldOutStyle>Oops! All products under this category are SOLD OUT ! </SoldOutStyle>
+    } else {
+      return (
+        <SoldOutStyle>
+          Oops! All products under this category are SOLD OUT !{" "}
+        </SoldOutStyle>
+      );
     }
   };
 
@@ -60,9 +62,7 @@ export default function CategoryDetailedView() {
           ))}
         </ul>
       </LeftSideNavStyle>
-      <ProductsGridStyle>
-          {renderResult()}
-     </ProductsGridStyle>
+      <ProductsGridStyle>{renderResult()}</ProductsGridStyle>
     </ProductListing>
   );
 }

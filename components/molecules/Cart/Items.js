@@ -1,7 +1,7 @@
 import { Grid, Button } from "@material-ui/core";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import RemoveCircleOutlineIcon from "@material-ui/icons/RemoveCircleOutline";
-import useStyles from "../../styles/Cart.Styles";
+import useStyles from "../../../styles/Cart.Styles";
 import { useState } from "react";
 
 export default function Item({ Item, getIndividualItemPrice }) {

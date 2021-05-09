@@ -2,7 +2,7 @@ import { Button, Drawer } from "@material-ui/core";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { useState } from "react";
 import useStyles from "./../../styles/Header/ShoppingCart.style";
-import CartContent from './../ShoppingCart/CartContent';
+import CartContent from '../organisms/Cart/index';
 
 function ShoppingCart({isLoggedIn,count}) {
   const classes = useStyles();
@@ -16,6 +16,7 @@ function ShoppingCart({isLoggedIn,count}) {
       return;
     }
     setState({ right: open });
+    console.log("-- Hello ---")
   };
 
   return (

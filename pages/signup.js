@@ -10,7 +10,7 @@ import {
   MainTitleStyle,
   useStyles,
 } from "./../styles/Pages/SignIn.Styles";
-import { userSignUp,login, snackbarMessage } from "./../redux/action/user";
+import { userSignUp, login, snackbarMessage } from "./../redux/action/user";
 
 export default function SignUp() {
   const classes = useStyles();
@@ -23,16 +23,16 @@ export default function SignUp() {
 
   const formik = useFormik({
     initialValues: {
-        firstName:"",
-        lastName:"",
-        email: "",
-        password: "",
-        cpassword:""
-      },
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      cpassword: "",
+    },
     validationSchema: signUpValidationSchema,
 
     onSubmit: (values) => {
-      dispatch(snackbarMessage("Registration successful"))
+      dispatch(snackbarMessage("Registration successful"));
       dispatch(userSignUp(values));
       route.push("/signin");
     },
@@ -45,15 +45,16 @@ export default function SignUp() {
         direction="row"
         justify="space-evenly"
         alignItems="center"
+        classes={{ container: classes.container }}
       >
-        <Grid item >
+        <Grid item className={classes.item}>
           <MainTitleStyle>Sign Up</MainTitleStyle>
           <p>We do not share your personal details with anyone</p>
         </Grid>
         <Grid item className={classes.signupForm}>
           <form onSubmit={formik.handleSubmit}>
             <TextField
-              className={classes.textField}
+              classes={{ root: classes.textField }}
               fullWidth
               id="firstName"
               name="firstName"
@@ -63,10 +64,19 @@ export default function SignUp() {
               error={
                 formik.touched.firstName && Boolean(formik.errors.firstName)
               }
+              InputLabelProps={{
+                classes: { root: classes.inputLabel },
+              }}
+              InputProps={{
+                classes: {
+                  input: classes.input,
+                  formControl: classes.textFieldForm,
+                },
+              }}
               helperText={formik.touched.firstName && formik.errors.firstName}
             />
             <TextField
-              className={classes.textField}
+              classes={{ root: classes.textField }}
               fullWidth
               id="lastName"
               name="lastName"
@@ -74,10 +84,19 @@ export default function SignUp() {
               value={formik.values.lastName}
               onChange={formik.handleChange}
               error={formik.touched.lastName && Boolean(formik.errors.lastName)}
+              InputLabelProps={{
+                classes: { root: classes.inputLabel },
+              }}
+              InputProps={{
+                classes: {
+                  formControl: classes.textFieldForm,
+                  input: classes.input,
+                },
+              }}
               helperText={formik.touched.lastName && formik.errors.lastName}
             />
             <TextField
-              className={classes.textField}
+              classes={{ root: classes.textField }}
               fullWidth
               id="email"
               name="email"
@@ -85,6 +104,15 @@ export default function SignUp() {
               value={formik.values.email}
               onChange={formik.handleChange}
               error={formik.touched.email && Boolean(formik.errors.email)}
+              InputLabelProps={{
+                classes: { root: classes.inputLabel },
+              }}
+              InputProps={{
+                classes: {
+                  formControl: classes.textFieldForm,
+                  input: classes.input,
+                },
+              }}
               helperText={formik.touched.email && formik.errors.email}
             />
             <TextField
@@ -96,6 +124,15 @@ export default function SignUp() {
               value={formik.values.password}
               onChange={formik.handleChange}
               error={formik.touched.password && Boolean(formik.errors.password)}
+              InputLabelProps={{
+                classes: { root: classes.inputLabel },
+              }}
+              InputProps={{
+                classes: {
+                  formControl: classes.textFieldForm,
+                  input: classes.input,
+                },
+              }}
               helperText={formik.touched.password && formik.errors.password}
             />
             <TextField
@@ -109,11 +146,20 @@ export default function SignUp() {
               error={
                 formik.touched.cpassword && Boolean(formik.errors.cpassword)
               }
+              InputLabelProps={{
+                classes: { root: classes.inputLabel },
+              }}
+              InputProps={{
+                classes: {
+                  formControl: classes.textFieldForm,
+                  input: classes.input,
+                },
+              }}
               helperText={formik.touched.cpassword && formik.errors.cpassword}
             />
             <Button
               disableElevation
-              classes={{root:classes.loginButton}}               
+              classes={{ root: classes.loginButton }}
               color="secondary"
               variant="contained"
               fullWidth

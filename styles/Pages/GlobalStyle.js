@@ -36,6 +36,17 @@ button{
         font-size:10px;
     }
   }
+
+  /* Tablets  */
+@media(max-width:768px){
+
+}
+
+/* Mobiles */
+@media(max-width:500px){
+
+}
+
 `;
 
 

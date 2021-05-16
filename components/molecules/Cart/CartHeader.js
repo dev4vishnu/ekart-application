@@ -7,7 +7,7 @@ export default function CartHeader({cartItems,closeDrawer}) {
   return (
     <div>
       <CartHead>
-        <DrawerTitle> My Cart &nbsp; ({cartItems.length} Items)</DrawerTitle>
+        <DrawerTitle> My Cart &nbsp; {cartItems.length ? <> ({cartItems.length} Items) </>:''}</DrawerTitle>
         <CloseIcon color="secondary" onClick={closeDrawer(false)} />
       </CartHead>
     </div>

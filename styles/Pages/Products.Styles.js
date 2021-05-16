@@ -2,26 +2,25 @@ import styled from "styled-components";
 import { makeStyles } from "@material-ui/styles";
 
 export const useStyles = makeStyles({
-  buyButton:{
-    textTransform:'none',
-    height:'20px',
+  buyButton: {
+    textTransform: "none",
+    height: "24px",
     borderRadius: 0,
     color: "white",
+    fontSize: "11px",
     fontFamily: "Dosis",
-  }
+  },
 });
-
-
 
 export const ProductListing = styled.div`
   /* display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, auto)); */
 
   /* 4 in row with 1140vw==== */
-   display: flex;
-    grid-template-columns: repeat(auto-fit,minmax(51px,184px));
+  display: flex;
+  grid-template-columns: repeat(auto-fit, minmax(51px, 184px));
 
-    /*   repeat(auto-fit,minmax(200px,156px)) */
+  /*   repeat(auto-fit,minmax(200px,156px)) */
 
   /* ===== 3 in a row with 900wv==== */
   /* display: flex;
@@ -39,7 +38,7 @@ export const ProductListing = styled.div`
 
 export const LeftSideNavStyle = styled.div`
   width: 250px;
-  background-color: #cacacd;
+  background-color: #ececec;
   padding: 5px;
   line-height: "1rem";
   ul {
@@ -51,10 +50,10 @@ export const LeftSideNavStyle = styled.div`
     padding: 6px;
     font-weight: 500;
     border: 0;
-    color: #646464;
+    color: #928c8c;
     text-decoration: none;
     list-style: none;
-    border-bottom: 2px solid #dedee0;
+    border-bottom: 1px solid #c2c2c3;
     padding: 10px;
   }
   li:hover {
@@ -78,12 +77,20 @@ export const ProductsGridStyle = styled.div`
 
 export const ProductCardStyles = styled.div`
   display: grid;
-  box-shadow: 1.5px 0.5px 2px 0px rgb(0 0 0 / 20%);
+  /* box-shadow: 1.5px 0.5px 2px 0px rgb(0 0 0 / 20%); */
   padding: 5px;
-  border: 0.5px solid #dedede;
+  /* border: 0.5px solid #dedede; */
+  border-bottom: 1px dashed #cdcdcd;
   img {
-    margin: 0 auto;
+    /* margin: 0 auto;
     height: 80px;
+    padding-top: 45px;
+    display: flex; */
+    margin: 0 auto;
+    height: auto;
+    padding-top: 25px;
+    display: flex;
+    width: 7rem;
   }
   .product-price {
     display: flex;
@@ -94,38 +101,61 @@ export const ProductCardStyles = styled.div`
   button {
     border-radius: 0;
   }
+
+  /* ============shadow effect ===== */
+  .right-border-effect {
+    position: relative;
+  }
+  .right-border-effect:after {
+    z-index: -1;
+    position: absolute;
+    content: "";
+    bottom: 20px;
+    right: 0px;
+    left: 185px;
+    width: 0.1px;
+    top: 15%;
+    max-width: 1px;
+    background: #d8d4d424;
+    box-shadow: 3px 0px 4px 0px #ccc6c6;
+    transform: rotate(1deg);
+  }
 `;
 
 export const ProductTitle = styled.div`
-  font-weight: 700;
-  margin: 0.5rem 0.5rem;
-  height: 35px;
+  font-weight: 200;
+  height: 40px;
   padding-top: 20px;
+  font-size: 16px;
+  margin-top: 0.5rem;
+  margin-bottom: 0.2rem;
+  margin-left: 0.5rem;
 `;
 
 export const ProductDescription = styled.div`
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  margin: 12px 4px;
-  background-color: #f2f5f4;
-  align-items: center;
-  min-height: 60px;
+overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 12px 0px;
+    background-color: #f5f5f5;
+    align-items: center;
+    height: 54px;
+    padding: 5px;
+    font-size: 11px;
+    font-weight: 100;
 `;
 
 export const ProductBottomGrid = styled.div`
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    align-items:center;
-    p{
-      font-size:10px;
-      font-weight:600;
-      color:black;
-      font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
-    }
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  p {
+    font-size: 11px;
+    font-weight: 300;
+    color: black;
+    font-family: "Dosis";
+    margin-left: 3px;
+  }
 `;
 
 export const SoldOutStyle = styled.div`
@@ -135,5 +165,5 @@ export const SoldOutStyle = styled.div`
   /* height: 65px; */
   margin-right: 8%;
   padding: 15px;
-  width:10rem;
+  width: 10rem;
 `;

@@ -29,3 +29,8 @@ export const snackbarMessage=(message)=>({
     type:SHOW_SNACKBAR,
     payload:message,
 })
+
+export const updateCart=(itemList)=>({
+    type:'UPDATE_CART',
+    payload:itemList,
+})

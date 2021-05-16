@@ -27,7 +27,7 @@ export default function CartContent({ closeDrawer }) {
       }
     }
     setTotalAmount(total);
-  }, []);
+  }, [CartArray]);
 
   const getPrice = (productId, price) => {
     let total = 0;

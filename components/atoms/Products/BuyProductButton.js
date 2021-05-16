@@ -6,7 +6,7 @@ export default function BuyProductButton({price,product,moveToCart}) {
   return (
     <>
       <ProductBottomGrid>
-        <p>MRP  Rs.{price}</p>
+        <p className={classes.mrp}>MRP  Rs.{price}</p>
         <Button
           onClick={() => {
             moveToCart(product);

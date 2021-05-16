@@ -3,9 +3,13 @@ import AddCircleIcon from "@material-ui/icons/AddCircle";
 import RemoveCircleOutlineIcon from "@material-ui/icons/RemoveCircleOutline";
 import useStyles from "../../../styles/Cart.Styles";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { updateCart } from './../../../redux/action/user';
 
-export default function Item({ Item, getIndividualItemPrice }) {
+
+export default function Item({ Item, getIndividualItemPrice,ItemList }) {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const { imageURL, id, name, price } = Item;
   const [quantity, setQuantity] = useState(1);
 
@@ -17,10 +21,15 @@ export default function Item({ Item, getIndividualItemPrice }) {
   };
 
   const decrementCount = (id) => {
-    let newQty = quantity - 1;
-    setQuantity(newQty);
-    let netAmount = price * newQty;
-    getIndividualItemPrice(id, netAmount);
+    if(quantity!==1){
+      let newQty = quantity - 1;
+      setQuantity(newQty);
+      let netAmount = price * newQty;
+      getIndividualItemPrice(id, netAmount);
+    }else{
+      let newList = ItemList.filter(item => item.id !== id)
+      dispatch(updateCart(newList));
+    }
   };
   return (
     <Grid
@@ -30,10 +39,10 @@ export default function Item({ Item, getIndividualItemPrice }) {
       justify="space-between"
       alignItems="center"
     >
-      <Grid item>
+      <Grid item className={classes.imgDiv}>
         <img src={imageURL} className={classes.itemImg} />
       </Grid>
-      <Grid item>
+      <Grid item className={classes.detailsDiv}>
         <Grid
           container
           direction="column"
@@ -45,11 +54,11 @@ export default function Item({ Item, getIndividualItemPrice }) {
             {name}{" "}
           </Grid>
           <Grid item className={classes.addOrRemoveItem}>
-            <Grid container>
+            <Grid container alignItems="center">
               <Grid item>
                 <Button
                   className={classes.btnStyle}
-                  disabled={quantity == 1 ? true : false}
+                  // disabled={quantity == 1 ? true : false}
                 >
                   <RemoveCircleOutlineIcon
                     color="secondary"
@@ -59,9 +68,11 @@ export default function Item({ Item, getIndividualItemPrice }) {
                   />
                 </Button>
               </Grid>
+              &nbsp;&nbsp;
               <Grid item className={classes.ItemQt}>
                 {quantity}
               </Grid>
+              &nbsp;&nbsp;
               <Grid item>
                 <Button className={classes.btnStyle}>
                   <AddCircleIcon

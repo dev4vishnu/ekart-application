@@ -22,10 +22,24 @@ const useStyles = makeStyles({
     color: 'black',
     fontSize:'11px',
     textTransform: "none",
+    fontFamily:'Dosis'
   },
   cartDrawer:{
     top:'82px',
     marginRight:'133px',
+    /*
+    
+    '@media(minWidth: 1140)' : {
+      top:'82px',
+      marginRight:'133px',
+    },
+    '@media(minWidth: 780px)' : {
+      minWidth: '100%',
+      top:0,
+      margin:0,
+      height:'100%',
+    }
+    */ 
   }
 });
 

@@ -1,9 +1,14 @@
 import styled from "styled-components";
 
 const ContentStyle =styled.div`
-    margin:50% auto;
-    width:auto;
-    text-align:center;
+    width: auto;
+    text-align: center;
+    position: absolute;
+    height: 50px;
+    top: 50%;
+    left: 50%;
+    margin-top: -25px;
+    margin-left: -25%;
     h3{
         color:#555;
         font-weight:bolder;

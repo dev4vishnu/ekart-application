@@ -39,7 +39,7 @@ const SignIn = () => {
         justify="space-around"
         alignItems="center"
       >
-        <Grid item>
+        <Grid item className={classes.loginHeaderBox}>
           <MainTitleStyle>Login</MainTitleStyle>
           <p>Get access to your Orders, Wishlist and Recommendations</p>
         </Grid>
@@ -47,11 +47,17 @@ const SignIn = () => {
           <form onSubmit={formik.handleSubmit}>
             <TextField
             //   placeholder="test@test.com"
-              className={classes.textField}
+              classes={{root:classes.textField}}
               fullWidth
               id="email"
               name="email"
               label="Email"
+              InputLabelProps={{
+                classes: { root: classes.inputLabel}
+              }}
+              InputProps={{
+                classes: { input: classes.input}
+              }}
               value={formik.values.email}
               onChange={formik.handleChange}
               error={formik.touched.email && Boolean(formik.errors.email)}
@@ -63,6 +69,9 @@ const SignIn = () => {
               name="password"
               label="Password"
               type="password"
+              InputLabelProps={{
+                classes: { root: classes.inputLabel}
+              }}
               value={formik.values.password}
               onChange={formik.handleChange}
               error={formik.touched.password && Boolean(formik.errors.password)}
